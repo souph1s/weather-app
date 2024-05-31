@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./App.css";
 import axios from "axios";
 import Weather from "./components/Weather";
+import { Search } from "lucide-react";
 
 function App() {
   const [data, setData] = useState({});
@@ -19,16 +19,25 @@ function App() {
   };
 
   return (
-    <div className="w-full h-full  relative">
-      <div className="text-center p-4">
-        <input
-          type="text"
-          className="py-3 px-6 w-[700px] text-lg rounded-3xl border border-gray-200 text-gray-600 placeholder:text-gray-400 bg-white-600/100 shadow-md"
-          placeholder="Enter your location..."
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-          onKeyDownCapture={searchLocation}
-        />
+    <div className="w-full h-screen relative bg-[#2f2f2f]">
+      <img
+        src={`/weather-icon.svg`}
+        alt="Weather Icon"
+        className="mx-auto"
+        style={{ width: "100px", height: "100px" }}
+      />
+      <div className="text-center mb-9 p-4 relative">
+        <div className="relative w-[700px] mx-auto drop-shadow-xl">
+          <input
+            type="text"
+            className="py-3 px-12 w-full text-lg rounded-3xl border border-gray-200 text-gray-600 placeholder:text-gray-400 bg-white-600/100 shadow-sm"
+            placeholder="Enter your location..."
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
+            onKeyDownCapture={searchLocation}
+          />
+          <Search className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+        </div>
       </div>
       <Weather weatherData={data} />
     </div>
