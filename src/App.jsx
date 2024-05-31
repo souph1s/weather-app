@@ -19,18 +19,18 @@ function App() {
   };
 
   return (
-    <div className="w-full h-screen relative bg-[#2f2f2f]">
+    <div className="w-full h-screen relative bg-[#2f2f2f] flex flex-col items-center justify-center p-4">
       <img
         src={`/weather-icon.svg`}
         alt="Weather Icon"
-        className="mx-auto"
+        className="mx-auto mb-4"
         style={{ width: "100px", height: "100px" }}
       />
-      <div className="text-center mb-9 p-4 relative">
-        <div className="relative w-[700px] mx-auto drop-shadow-xl">
+      <div className="text-center mb-9 p-4 w-full max-w-md">
+        <div className="relative w-full">
           <input
             type="text"
-            className="py-3 px-12 w-full text-lg rounded-3xl border border-gray-200 text-gray-600 placeholder:text-gray-400 bg-white-600/100 shadow-sm"
+            className="py-3 px-12 w-full text-lg rounded-3xl border border-gray-200 text-gray-600 placeholder:text-gray-400 bg-white-600/100 shadow-md"
             placeholder="Enter your location..."
             value={location}
             onChange={(event) => setLocation(event.target.value)}
