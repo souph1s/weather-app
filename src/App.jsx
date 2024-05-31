@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Weather from "./components/Weather";
 import { Search } from "lucide-react";
@@ -6,8 +6,13 @@ import { Search } from "lucide-react";
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+  const [inputVisible, setInputVisible] = useState(false);
   const API_KEY = "976c9acb7facf14332c48c0e362b712c";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_KEY}`;
+
+  useEffect(() => {
+    setInputVisible(true);
+  }, []);
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
@@ -26,7 +31,11 @@ function App() {
         className="mx-auto mb-4"
         style={{ width: "100px", height: "100px" }}
       />
-      <div className="text-center mb-9 p-4 w-full max-w-md">
+      <div
+        className={`text-center mb-9 p-4 w-full max-w-md transition-opacity duration-1000 ${
+          inputVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <div className="relative w-full">
           <input
             type="text"
